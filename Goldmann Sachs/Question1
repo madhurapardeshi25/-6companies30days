@@ -1,61 +1,50 @@
-// { Driver Code Starts
-//Initial Template for C++
-
+Q1: Print anagrams together
 
 #include <bits/stdc++.h>
-#include <unordered_map>
+
 using namespace std;
 
-// } Driver Code Ends
-//User function Template for C++
-
-class Solution{
-  public:
-    vector<vector<string> > Anagrams(vector<string>& string_list) {
+ vector<vector<string> > Anagrams(vector<string>& string_list) {
         //code here
-        vector<vector<string>> ans;
-        unordered_map <string, vector<string>> mp;
-       
-         for(int i=0;i<string_list.size();i++) {
-            string word = string_list[i];
-            sort(word.begin(), word.end());
-            mp[word].push_back(string_list[i]);
+        vector<vector<string> >res;
+        
+        unordered_map<string , vector<string> >mp;
+        
+        for(int i=0 ; i<string_list.size() ; i++){
+            string s = string_list[i];
+            sort(s.begin() , s.end());
+            
+            mp[s].push_back(string_list[i]);
+            
         }
-       
-        for(auto i : mp) {
-            ans.push_back(i.second);
-        }    
-        return ans;
+        
+        for (auto i: mp){
+            res.push_back(i.second);
+        }
+        
+        return res;
     }
-};
 
-// { Driver Code Starts.
 
-int main()
-{
-    int t;
-    cin>>t;
-    while(t--)
-    {
+    int main(){
         int n;
         cin>>n;
-        vector<string> string_list(n);
-        for (int i = 0; i < n; ++i)
-            cin>>string_list[i]; 
-        Solution ob;
-        vector<vector<string> > result = ob.Anagrams(string_list);
-        sort(result.begin(),result.end());
-        for (int i = 0; i < result.size(); i++)
-        {
-            for(int j=0; j < result[i].size(); j++)
-            {
-                cout<<result[i][j]<<" ";
-            }
-            cout<<"\n";
-        }
-    }
 
-    return 0;
-}
-  
-// } Driver Code Ends
+        vector<string>list(n);
+        for(int i=0 ; i<n ; i++)
+            cin>>list[i];
+
+        vector<vector<string> >result = Anagrams(list);
+
+        sort(result.begin() , result.end());
+        
+        for(int i=0 ; i<result.size(); i++){
+
+            for(int j=0 ; j<result[i].size() ; j++){
+                cout<< result[i][j]<<" ";
+            }
+
+            cout<<endl;
+        }
+
+    }
