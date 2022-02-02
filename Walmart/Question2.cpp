@@ -1,4 +1,4 @@
-2. Stone Game
+Q2. Stone Game
 
 
 #include <bits/stdc++.h>
